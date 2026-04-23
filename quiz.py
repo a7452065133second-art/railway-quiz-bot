@@ -208,7 +208,7 @@ with tab1:
             context = get_dynamic_text(all_pgs, toc, topic_sel)
             with st.spinner("Generating..."):
                 resp = client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="gemini-flash-lite-latest",
                     config={'system_instruction': SYSTEM_INSTRUCTION},
                     contents=f"Topic: {topic_sel}. Num: {num_q}. Diff: {diff}. Context: {context}"
                 )
