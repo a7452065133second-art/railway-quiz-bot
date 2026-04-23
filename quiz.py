@@ -7,6 +7,24 @@ import re
 import json
 from dotenv import load_dotenv
 
+# Simple Password Protection
+def check_password():
+    if "password_correct" not in st.session_state:
+        st.text_input("Enter Access Code", type="password", on_change=password_entered, key="password")
+        return False
+    return st.session_state["password_correct"]
+
+def password_entered():
+    if st.session_state["password"] == "Railbot1702": # You can change this password
+        st.session_state["password_correct"] = True
+        del st.session_state["password"]
+    else:
+        st.error("Incorrect code")
+
+if not check_password():
+    st.stop()
+
+
 # --- 1. Configuration & Security ---
 load_dotenv()
 
